@@ -2,20 +2,26 @@
 from langchain.llms import OpenAI
 from flask import Flask, request, render_template
 
-
 #Set llm temperature
 llm = OpenAI(temperature=0.9)
 
 
 
-#Webapp code
+### WEBAPP CODE ###
 
+# Create an app
 app = Flask(__name__)
 
+
+## Create route handlers
+
+# Landing root route handler ;)
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
+# Form route handler
 @app.route('/submit', methods=['POST'])
 def submit():
     greeting = "Hello, there!"
@@ -26,13 +32,15 @@ def submit():
 
     return render_template('result.html', name=name, answer=answer)
 
+# Main app
 if __name__ == '__main__':
     app.run()
 
 
 
 
-
+###### BACKUP SOURCE CODE #####
+###### DO NOT DELETE #####
 
 ### Source Code ###
 
@@ -54,3 +62,5 @@ if __name__ == '__main__':
 # #Print prediction
 # print(name + ", " + answer)
 
+
+###### END BACKUP SOURCE CODE #####
