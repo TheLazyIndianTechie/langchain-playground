@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>My Flask App</title>
+</head>
 <body>
-  <form action="/submit" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
-    <input type="submit" value="Submit">
-  </form>
+    <h1>Welcome to My Flask App</h1>
+    <form action="/submit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="question">Question:</label>
+        <input type="text" id="question" name="question"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

@@ -9,45 +9,48 @@ llm = OpenAI(temperature=0.9)
 
 
 #Webapp code
-app = Flask(__name__)
-
-from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
-#jinja code
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
+    greeting = "Hello, there!"
     name = request.form.get('name')
-    # Process the form data here
-    return f'Hello, {name}!'
+    question = request.form.get('question')
+
+    answer = llm.predict(question)
+
+    return render_template('result.html', name=name, answer=answer)
 
 if __name__ == '__main__':
     app.run()
-### End Webapp Code
 
 
 
-greeting = "Hello, there!"
-
-name = input("Enter your name: ")
-print("Hello, " + name)
 
 
-#prompt user for question
-question = input("Query: ")
-print("Processing...")
 
-#Query llm for prediction
-answer = llm.predict(question)
+### Source Code ###
 
-print("\n\n")
+# greeting = "Hello, there!"
 
-#Print prediction
-print(name + ", " + answer)
+# name = input("Enter your name: ")
+# print("Hello, " + name)
+
+
+# #prompt user for question
+# question = input("Query: ")
+# print("Processing...")
+
+# #Query llm for prediction
+# answer = llm.predict(question)
+
+# print("\n\n")
+
+# #Print prediction
+# print(name + ", " + answer)
 
